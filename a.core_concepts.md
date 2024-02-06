@@ -11,7 +11,7 @@ kubernetes.io > Documentation > Tasks > Access Applications in a Cluster > [Acce
 
 kubernetes.io > Documentation > Tasks > Access Applications in a Cluster > [Use Port Forwarding to Access Applications in a Cluster](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
 
-### Create a namespace called 'mynamespace' and a pod with image nginx called nginx on this namespace
+### [OK] ~~Create a namespace called 'mynamespace' and a pod with image nginx called nginx on this namespace~~
 
 <details><summary>show</summary>
 <p>
@@ -88,8 +88,7 @@ kubectl logs busybox
 </p>
 </details>
 
-### [Not OK] Create a busybox pod (using YAML) that runs the command "env". Run it and see the output
-### ---> (Chạy ở socias không start được Pods, chạy lại ở local minikube)
+### [OK] ~~Create a busybox pod (using YAML) that runs the command "env". Run it and see the output~~
 
 <details><summary>show</summary>
 <p>
@@ -219,7 +218,7 @@ kubectl get po nginx -o jsonpath='{.spec.containers[].image}{"\n"}'
 </p>
 </details>
 
-### [AGAIN] Get nginx pod's ip created in previous step, use a temp busybox image to wget its '/'
+### [OK] ~~Get nginx pod's ip created in previous step, use a temp busybox image to wget its '/'~~
 
 <details><summary>show</summary>
 <p>
