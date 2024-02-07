@@ -12,7 +12,7 @@
 ## Labels and Annotations
 kubernetes.io > Documentation > Concepts > Overview > Working with Kubernetes Objects > [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)
 
-### Create 3 pods with names nginx1,nginx2,nginx3. All of them should have the label app=v1
+### [OK] ~~Create 3 pods with names nginx1,nginx2,nginx3. All of them should have the label app=v1~~
 
 <details><summary>show</summary>
 <p>
@@ -28,7 +28,7 @@ for i in `seq 1 3`; do kubectl run nginx$i --image=nginx -l app=v1 ; done
 </p>
 </details>
 
-### Show all labels of the pods
+### [OK] ~~Show all labels of the pods~~
 
 <details><summary>show</summary>
 <p>
@@ -40,7 +40,7 @@ kubectl get po --show-labels
 </p>
 </details>
 
-### Change the labels of pod 'nginx2' to be app=v2
+### [OK] ~~Change the labels of pod 'nginx2' to be app=v2~~
 
 <details><summary>show</summary>
 <p>
@@ -52,7 +52,7 @@ kubectl label po nginx2 app=v2 --overwrite
 </p>
 </details>
 
-### Get the label 'app' for the pods (show a column with APP labels)
+### [OK] ~~Get the label 'app' for the pods (show a column with APP labels)~~
 
 <details><summary>show</summary>
 <p>
@@ -66,7 +66,7 @@ kubectl get po --label-columns=app
 </p>
 </details>
 
-### Get only the 'app=v2' pods
+### [OK] ~~Get only the 'app=v2' pods~~
 
 <details><summary>show</summary>
 <p>
@@ -82,7 +82,7 @@ kubectl get po --selector=app=v2
 </p>
 </details>
 
-### Add a new label tier=web to all pods having 'app=v2' or 'app=v1' labels
+### [OK] ~~Add a new label tier=web to all pods having 'app=v2' or 'app=v1' labels~~
 
 <details><summary>show</summary>
 <p>
@@ -94,7 +94,7 @@ kubectl label po -l "app in(v1,v2)" tier=web
 </details>
 
 
-### Add an annotation 'owner: marketing' to all pods having 'app=v2' label
+### [OK] ~~Add an annotation 'owner: marketing' to all pods having 'app=v2' label~~
 
 <details><summary>show</summary>
 <p>
@@ -105,7 +105,7 @@ kubectl annotate po -l "app=v2" owner=marketing
 </p>
 </details>
 
-### Remove the 'app' label from the pods we created before
+### [OK] ~~Remove the 'app' label from the pods we created before~~
 
 <details><summary>show</summary>
 <p>
