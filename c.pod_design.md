@@ -121,7 +121,7 @@ kubectl label po -l app app-
 </p>
 </details>
 
-### Annotate pods nginx1, nginx2, nginx3 with "description='my description'" value
+### [OK] ~~Annotate pods nginx1, nginx2, nginx3 with "description='my description'" value~~
 
 <details><summary>show</summary>
 <p>
@@ -138,7 +138,7 @@ kubectl annotate po nginx{1..3} description='my description'
 </p>
 </details>
 
-### Check the annotations for pod nginx1
+### [OK] ~~Check the annotations for pod nginx1~~
 
 <details><summary>show</summary>
 <p>
@@ -160,7 +160,7 @@ As an alternative to using `| grep` you can use jsonPath like `kubectl get po ng
 </p>
 </details>
 
-### Remove the annotations for these three pods
+### [OK] ~~Remove the annotations for these three pods~~
 
 <details><summary>show</summary>
 <p>
@@ -172,7 +172,7 @@ kubectl annotate po nginx{1..3} description- owner-
 </p>
 </details>
 
-### Remove these pods to have a clean state in your cluster
+### [OK] ~~Remove these pods to have a clean state in your cluster~~
 
 <details><summary>show</summary>
 <p>
@@ -186,7 +186,7 @@ kubectl delete po nginx{1..3}
 
 ## Pod Placement
 
-### Create a pod that will be deployed to a Node that has the label 'accelerator=nvidia-tesla-p100'
+### [OK] ~~Create a pod that will be deployed to a Node that has the label 'accelerator=nvidia-tesla-p100'~~
 
 <details><summary>show</summary>
 <p>
@@ -244,7 +244,7 @@ spec:
 </p>
 </details>
 
-### Taint a node with key `tier` and value `frontend` with the effect `NoSchedule`. Then, create a pod that tolerates this taint.
+### [OK] Taint a node with key `tier` and value `frontend` with the effect `NoSchedule`. Then, create a pod that tolerates this taint.
 
 <details><summary>show</summary>
 <p>
@@ -313,7 +313,7 @@ kubectl create -f pod.yaml
 
 kubernetes.io > Documentation > Concepts > Workloads > Workload Resources > [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment)
 
-### Create a deployment with image nginx:1.18.0, called nginx, having 2 replicas, defining port 80 as the port that this container exposes (don't create a service for this deployment)
+### [OK] ~~Create a deployment with image nginx:1.18.0, called nginx, having 2 replicas, defining port 80 as the port that this container exposes (don't create a service for this deployment)~~
 
 <details><summary>show</summary>
 <p>
@@ -342,7 +342,7 @@ kubectl create deploy nginx --image=nginx:1.18.0 --replicas=2 --port=80
 </p>
 </details>
 
-### View the YAML of this deployment
+### [OK] ~~View the YAML of this deployment~~
 
 <details><summary>show</summary>
 <p>
@@ -354,7 +354,7 @@ kubectl get deploy nginx -o yaml
 </p>
 </details>
 
-### View the YAML of the replica set that was created by this deployment
+### [OK] ~~View the YAML of the replica set that was created by this deployment~~
 
 <details><summary>show</summary>
 <p>
@@ -371,7 +371,7 @@ kubectl get rs nginx-7bf7478b77 -o yaml
 </p>
 </details>
 
-### Get the YAML for one of the pods
+### [OK] ~~Get the YAML for one of the pods~~
 
 <details><summary>show</summary>
 <p>
@@ -387,7 +387,7 @@ kubectl get po nginx-7bf7478b77-gjzp8 -o yaml
 </p>
 </details>
 
-### Check how the deployment rollout is going
+### [OK] ~~Check how the deployment rollout is going~~
 
 <details><summary>show</summary>
 <p>
@@ -399,7 +399,7 @@ kubectl rollout status deploy nginx
 </p>
 </details>
 
-### Update the nginx image to nginx:1.19.8
+### [OK] ~~Update the nginx image to nginx:1.19.8~~
 
 <details><summary>show</summary>
 <p>
@@ -415,7 +415,7 @@ The syntax of the 'kubectl set image' command is `kubectl set image (-f FILENAME
 </p>
 </details>
 
-### Check the rollout history and confirm that the replicas are OK
+### [OK] ~~Check the rollout history and confirm that the replicas are OK~~
 
 <details><summary>show</summary>
 <p>
@@ -430,7 +430,7 @@ kubectl get po
 </p>
 </details>
 
-### Undo the latest rollout and verify that new pods have the old image (nginx:1.18.0)
+### [OK] ~~Undo the latest rollout and verify that new pods have the old image (nginx:1.18.0)~~
 
 <details><summary>show</summary>
 <p>
@@ -445,7 +445,7 @@ kubectl describe po nginx-5ff4457d65-nslcl | grep -i image # should be nginx:1.1
 </p>
 </details>
 
-### Do an on purpose update of the deployment with a wrong image nginx:1.91
+### [OK] ~~Do an on purpose update of the deployment with a wrong image nginx:1.91~~
 
 <details><summary>show</summary>
 <p>
@@ -461,7 +461,7 @@ kubectl edit deploy nginx
 </p>
 </details>
 
-### Verify that something's wrong with the rollout
+### [OK] ~~Verify that something's wrong with the rollout~~
 
 <details><summary>show</summary>
 <p>
@@ -476,7 +476,7 @@ kubectl get po # you'll see 'ErrImagePull' or 'ImagePullBackOff'
 </details>
 
 
-### Return the deployment to the second revision (number 2) and verify the image is nginx:1.19.8
+### [OK] ~~Return the deployment to the second revision (number 2) and verify the image is nginx:1.19.8~~
 
 <details><summary>show</summary>
 <p>
@@ -490,7 +490,7 @@ kubectl rollout status deploy nginx # Everything should be OK
 </p>
 </details>
 
-### Check the details of the fourth revision (number 4)
+### [OK] ~~Check the details of the fourth revision (number 4)~~
 
 <details><summary>show</summary>
 <p>
@@ -502,7 +502,7 @@ kubectl rollout history deploy nginx --revision=4 # You'll also see the wrong im
 </p>
 </details>
 
-### Scale the deployment to 5 replicas
+### [OK] ~~Scale the deployment to 5 replicas~~
 
 <details><summary>show</summary>
 <p>
@@ -516,7 +516,7 @@ kubectl describe deploy nginx
 </p>
 </details>
 
-### Autoscale the deployment, pods between 5 and 10, targetting CPU utilization at 80%
+### [OK] ~~Autoscale the deployment, pods between 5 and 10, targetting CPU utilization at 80%~~
 
 <details><summary>show</summary>
 <p>
@@ -530,7 +530,7 @@ kubectl get hpa nginx
 </p>
 </details>
 
-### Pause the rollout of the deployment
+### [OK] ~~Pause the rollout of the deployment~~
 
 <details><summary>show</summary>
 <p>
@@ -542,7 +542,7 @@ kubectl rollout pause deploy nginx
 </p>
 </details>
 
-### Update the image to nginx:1.19.9 and check that there's nothing going on, since we paused the rollout
+### [OK] ~~Update the image to nginx:1.19.9 and check that there's nothing going on, since we paused the rollout~~
 
 <details><summary>show</summary>
 <p>
@@ -558,7 +558,7 @@ kubectl rollout history deploy nginx # no new revision
 </p>
 </details>
 
-### Resume the rollout and check that the nginx:1.19.9 image has been applied
+### [OK] ~~Resume the rollout and check that the nginx:1.19.9 image has been applied~~
 
 <details><summary>show</summary>
 <p>
@@ -572,7 +572,7 @@ kubectl rollout history deploy nginx --revision=6 # insert the number of your la
 </p>
 </details>
 
-### Delete the deployment and the horizontal pod autoscaler you created
+### [OK] ~~Delete the deployment and the horizontal pod autoscaler you created~~
 
 <details><summary>show</summary>
 <p>
@@ -587,7 +587,7 @@ kubectl delete deploy/nginx hpa/nginx
 </p>
 </details>
 
-### Implement canary deployment by running two instances of nginx marked as version=v1 and version=v2 so that the load is balanced at 75%-25% ratio
+### [OK] ~~Implement canary deployment by running two instances of nginx marked as version=v1 and version=v2 so that the load is balanced at 75%-25% ratio~~
 
 <details><summary>show</summary>
 <p>
@@ -735,7 +735,7 @@ version-2
 
 ## Jobs
 
-### Create a job named pi with image perl:5.34 that runs the command with arguments "perl -Mbignum=bpi -wle 'print bpi(2000)'"
+### [OK] ~~Create a job named pi with image perl:5.34 that runs the command with arguments "perl -Mbignum=bpi -wle 'print bpi(2000)'"~~
 
 <details><summary>show</summary>
 <p>
@@ -747,7 +747,7 @@ kubectl create job pi  --image=perl:5.34 -- perl -Mbignum=bpi -wle 'print bpi(20
 </p>
 </details>
 
-### Wait till it's done, get the output
+### [OK] ~~Wait till it's done, get the output~~
 
 <details><summary>show</summary>
 <p>
@@ -776,7 +776,7 @@ kubectl delete job pi
 </p>
 </details>
 
-### Create a job with the image busybox that executes the command 'echo hello;sleep 30;echo world'
+### [OK] ~~Create a job with the image busybox that executes the command 'echo hello;sleep 30;echo world'~~
 
 <details><summary>show</summary>
 <p>
@@ -788,7 +788,7 @@ kubectl create job busybox --image=busybox -- /bin/sh -c 'echo hello;sleep 30;ec
 </p>
 </details>
 
-### Follow the logs for the pod (you'll wait for 30 seconds)
+### [OK] ~~Follow the logs for the pod (you'll wait for 30 seconds)~~
 
 <details><summary>show</summary>
 <p>
@@ -801,7 +801,7 @@ kubectl logs busybox-ptx58 -f # follow the logs
 </p>
 </details>
 
-### See the status of the job, describe it and see the logs
+### [OK] ~~See the status of the job, describe it and see the logs~~
 
 <details><summary>show</summary>
 <p>
@@ -815,7 +815,7 @@ kubectl logs job/busybox
 </p>
 </details>
 
-### Delete the job
+### [OK] ~~Delete the job~~
 
 <details><summary>show</summary>
 <p>
@@ -827,7 +827,7 @@ kubectl delete job busybox
 </p>
 </details>
 
-### Create a job but ensure that it will be automatically terminated by kubernetes if it takes more than 30 seconds to execute
+### [OK] ~~Create a job but ensure that it will be automatically terminated by kubernetes if it takes more than 30 seconds to execute~~
 
 <details><summary>show</summary>
 <p>
@@ -869,7 +869,7 @@ status: {}
 </p>
 </details>
 
-### Create the same job, make it run 5 times, one after the other. Verify its status and delete it
+### [OK] ~~Create the same job, make it run 5 times, one after the other. Verify its status and delete it~~
 
 <details><summary>show</summary>
 <p>
@@ -923,7 +923,7 @@ kubectl delete jobs busybox
 </p>
 </details>
 
-### Create the same job, but make it run 5 parallel times
+### [OK] ~~Create the same job, but make it run 5 parallel times~~
 
 <details><summary>show</summary>
 <p>
@@ -980,7 +980,7 @@ kubectl delete job busybox
 
 kubernetes.io > Documentation > Tasks > Run Jobs > [Running Automated Tasks with a CronJob](https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/)
 
-### Create a cron job with image busybox that runs on a schedule of "*/1 * * * *" and writes 'date; echo Hello from the Kubernetes cluster' to standard output
+### [OK] ~~Create a cron job with image busybox that runs on a schedule of "*/1 * * * *" and writes 'date; echo Hello from the Kubernetes cluster' to standard output~~
 
 <details><summary>show</summary>
 <p>
@@ -992,7 +992,7 @@ kubectl create cronjob busybox --image=busybox --schedule="*/1 * * * *" -- /bin/
 </p>
 </details>
 
-### See its logs and delete it
+### [OK] ~~See its logs and delete it~~
 
 <details><summary>show</summary>
 <p>
@@ -1006,7 +1006,7 @@ kubectl delete cj busybox # cj stands for cronjob
 </p>
 </details>
 
-### Create the same cron job again, and watch the status. Once it ran, check which job ran by the created cron job. Check the log, and delete the cron job
+### [OK] ~~Create the same cron job again, and watch the status. Once it ran, check which job ran by the created cron job. Check the log, and delete the cron job~~
 
 <details><summary>show</summary>
 <p>
@@ -1023,7 +1023,7 @@ kubectl delete cj busybox
 </p>
 </details>
 
-### Create a cron job with image busybox that runs every minute and writes 'date; echo Hello from the Kubernetes cluster' to standard output. The cron job should be terminated if it takes more than 17 seconds to start execution after its scheduled time (i.e. the job missed its scheduled time).
+### [OK] ~~Create a cron job with image busybox that runs every minute and writes 'date; echo Hello from the Kubernetes cluster' to standard output. The cron job should be terminated if it takes more than 17 seconds to start execution after its scheduled time (i.e. the job missed its scheduled time).~~
 
 <details><summary>show</summary>
 <p>
@@ -1067,7 +1067,7 @@ status: {}
 </p>
 </details>
 
-### Create a cron job with image busybox that runs every minute and writes 'date; echo Hello from the Kubernetes cluster' to standard output. The cron job should be terminated if it successfully starts but takes more than 12 seconds to complete execution.
+### [OK] ~~Create a cron job with image busybox that runs every minute and writes 'date; echo Hello from the Kubernetes cluster' to standard output. The cron job should be terminated if it successfully starts but takes more than 12 seconds to complete execution.~~
 
 <details><summary>show</summary>
 <p>
@@ -1111,7 +1111,7 @@ status: {}
 </p>
 </details>
 
-### Create a job from cronjob.
+### [OK] ~~Create a job from cronjob.~~
 
 <details><summary>show</summary>
 <p>
